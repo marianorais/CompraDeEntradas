@@ -1,0 +1,7 @@
+﻿@model Compra_de_Entradas.Models.Usuarios
+@{
+    ViewData["Title"] = "Home Page";
+}
+<a asp-controller="Favoritos" asp-action="MovieFavShow" asp-route-id="@Model.Id_usuario" class="btn btn-danger btn-sm">Favorite Movies</a>
+@*<a asp-controller="" asp-action="" asp-route-id="@Html.DisplayNameFor(model => model.Id_usuario)" class="btn btn-info btn-sm">Comprar Entradas</a>*@
+

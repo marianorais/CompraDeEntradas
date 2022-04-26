@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Compra_de_Entradas.Models.Entradas>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the tickets</h1>
+    <p>Here you can see the movie that you want.</p>
+</div>
+<hr>
+<h1>All tickets bought</h1>
+
+<form action="../../form-result.php" method="post" target="_blank">
+    <p>
+        Buscar ticket: <input type="search" name="campobusqueda" list="listamascotas">
+        <input type="submit" value="Search">
+    </p>
+</form>
+<datalist id="listamascotas">
+</datalist>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fila)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_pelicula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_usuario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => ticket.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => ticket.Fila)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => ticket.Id_pelicula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => ticket.Id_usuario)
+            </td>
+
+            <td>
+                <a asp-controller="Compra" asp-action="Edit" asp-route-id="@ticket.Id_entrada" class="btn btn-success btn-sm">Edit</a>
+                <a asp-controller="Compra" asp-action="Delete" asp-route-id="@ticket.Id_entrada" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
